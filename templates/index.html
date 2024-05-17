@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+Secrets
+{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+    .btn-primary, .btn-primary:hover, .btn-primary:focus {
+        background-color: #ff5f00;
+        border-color: #ff5f00;
+    }
+    .btn-primary:hover, .btn-primary:focus {
+        background-color: #ff4500;
+        border-color: #ff4500;
+    }
+    .btn-primary:active {
+        background-color: #ffcc00;
+        border-color: #ffcc00;
+        box-shadow: 0 0 10px 5px #ffcc00;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Greetings Traveler</h1>
+        <p>Are you ready to discover my secret?</p>
+        <form method="POST" action="{{ url_for('login') }}">
+            <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 0;">YESSSSSS</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

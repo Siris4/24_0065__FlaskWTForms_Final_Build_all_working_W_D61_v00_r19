@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Login</title>
+    <style>
+        .btn-primary, .btn-primary:hover, .btn-primary:focus {
+            background-color: #ff5f00; /* Fluorescent orange color */
+            border-color: #ff5f00; /* Ensure the border is the same color */
+        }
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #ff4500; /* A slightly darker shade for hover state */
+            border-color: #ff4500;
+        }
+        .btn-primary:active {
+            background-color: #ffcc00; /* Bright yellow color */
+            border-color: #ffcc00; /* Bright yellow border */
+            box-shadow: 0 0 10px 5px #ffcc00; /* Adds a bright yellow glow effect */
+        }
+        .errors { color: red; } /* Style for error messages */
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Login</h1>
+            {% from 'bootstrap5/form.html' import render_form %}
+            <form method="POST" action="{{ url_for('login') }}" novalidate>
+                {{ form.csrf_token }}
+                <!-- Use this to generate a standard form: {{ render_form(form) }}  -It can replace most of below. but we have custom code -->
+                <div>
+                    {{ form.email.label }} {{ form.email(size=30) }}
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <span class="errors">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div>
+                    {{ form.password.label }} {{ form.password(size=30) }}
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            <span class="errors">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {{ form.submit(class="btn btn-primary btn-lg", style="margin-top: 0.5cm;") }}
+            </form>
+        </div>
+    </div>
+</body>
+</html>
